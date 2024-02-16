@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/sample_project
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: SanthoshRam
+      POSTGRES_DB: Santhosh_database
+      POSTGRES_PASSWORD: santhoshram@app.
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
